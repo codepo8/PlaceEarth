@@ -18,8 +18,13 @@ if(isset($_GET['url'])){
 if(isset($_GET['url'])){
 
   $key = 'RnqsLdPV34FbBSqnpSS8YMGcPcO9HRtWgAQ_Y7dN6pjCjF8ldmk_I.IrxtOOPZc-';
+// ^ placemaker key, please replace with your own. Get it at 
+// https://developer.yahoo.com/wsregapp/
 
-// ^ placemaker key, please replace with your own! 
+  $googlekey = 'ABQIAAAAijZqBZcz-rowoXZC1tt9iRQoXZxM6mF5JTMb2Ef3IreE9'.
+               'giLxBTRgzgpNTtafX7QhFDMbJ8g20HbSg';
+// ^ google key, please replace with your own! at
+// http://code.google.com/apis/maps/signup.html
 
   $url = $_GET['url'];
   $o = $_GET['output'];
@@ -192,6 +197,7 @@ if(isset($_GET['url'])){
         background:#69c;
   color:#fff;
       }
+      #ft{font-size:80%;margin-top:3em;color:#999;}
   li:hover button{color:#fff;}
   </style>
 </head>
@@ -201,7 +207,7 @@ if(isset($_GET['url'])){
   <div id="bd" role="main">
     <p>PlaceEarth is a demo of how you can use Yahoo Placemaker to find geographical locations in a certain web site and show them in Google Earth.</p>
     <p>Simply enter the URL of the site you want to analyse in the following form.</p>
-      <form action="kml.php" method="get">
+      <form action="index.php" method="get">
         <div><label for="url">URL:</label><input type="text" name="url" id="url" value="<?php echo $_GET['url'];?>"><input type="submit" value="get locations"></div>
       </form>
       <?php if(isset($_GET['url'])){?>
@@ -220,12 +226,12 @@ if(isset($_GET['url'])){
       <p>If you want to see the outcome directly in Google Earth as KML, simply add an <code>output=kml</code> to the URL. For example: <br><a href="index.php?url=http%3A%2F%2Fwait-till-i.com&output=kml">index.php?url=http%3A%2F%2Fwait-till-i.com&output=kml</a></p>
       <p>To debug and see why nothing was found add <code>raw=true</code> to the URL. For example: <br><a href="index.php?url=http%3A%2F%2Fwait-till-i.com&raw">index.php?url=http%3A%2F%2Fwait-till-i.com&raw=true</a></p>
   </div>
-  <div id="ft" role="contentinfo"><p>Written by Christian Heilmann, source available on GitHub</p></div>
+  <div id="ft" role="contentinfo"><p>Written by Christian Heilmann, <a href="http://github.com/codepo8/PlaceEarth">source available on GitHub</a></p></div>
 </div>
 
 <?php if(isset($_GET['url'])){?>
 
-<script src="http://www.google.com/jsapi?key=ABQIAAAA1XbMiDxx_BTCY2_FkPh06RRaGTYH6UMl8mADNa0YKuWNNa8VNxQEerTAUcfkyrr6OwBovxn7TDAH5Q"></script>
+<script src="http://www.google.com/jsapi?key=<?php echo $googlekey;?>"></script>
 <script type="text/javascript">
 var ge;
 google.load("earth", "1");
